@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/db_example'
+    username: postgres
+    password: '8080'
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+  logging:
+    level:
+      org.springframework: ERROR
+      org.hibernate: DEBUG
+car:
+  maxCars: 5
+  enableSortingFields:
+    - manufacturer
+    - model
+    - price
+loan:
+  minimalIncome: 40000
+  minimalCarPrice: 1000000
+  sixMonthsIncomeCoeff: 6
+  propertyCoeff: 0.3
