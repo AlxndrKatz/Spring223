@@ -19,10 +19,8 @@ public class LoanController {
 
     @GetMapping("/loan")
     public String getLoanByUserId(@RequestParam(value = "userId", required = false) Long userId,
-                                 Model model) {
-        //
+                                  Model model) {
         model.addAttribute("loan", service.assessLoan(userId));
-        //
         return "loan";
     }
 }

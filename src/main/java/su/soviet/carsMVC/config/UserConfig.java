@@ -4,11 +4,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties("user")
+@ConfigurationProperties("loan")
 public class UserConfig {
     private int minimalIncome;
     private  int minimalCarPrice;
-    private int incomeCoeff;
+    private int sixMonthsIncomeCoeff;
     private double propertyCoeff;
 
     public int getMinimalIncome() {
@@ -27,12 +27,12 @@ public class UserConfig {
         this.minimalCarPrice = minimalCarPrice;
     }
 
-    public int getIncomeCoeff() {
-        return incomeCoeff;
+    public int getSixMonthsIncomeCoeff() {
+        return sixMonthsIncomeCoeff;
     }
 
-    public void setIncomeCoeff(int incomeCoeff) {
-        this.incomeCoeff = incomeCoeff;
+    public void setSixMonthsIncomeCoeff(int sixMonthsIncomeCoeff) {
+        this.sixMonthsIncomeCoeff = sixMonthsIncomeCoeff;
     }
 
     public double getPropertyCoeff() {

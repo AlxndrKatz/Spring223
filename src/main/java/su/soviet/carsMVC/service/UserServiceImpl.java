@@ -1,11 +1,14 @@
 package su.soviet.carsMVC.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 import su.soviet.carsMVC.config.UserConfig;
 import su.soviet.carsMVC.model.User;
 import su.soviet.carsMVC.repository.UserRepository;
 
+@Service
+@PropertySource("application.yml")
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -13,9 +16,6 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserConfig config;
-
-    @Autowired
-    private RestTemplate template;
 
     @Override
     public User getUser(Long id) {
@@ -27,27 +27,30 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String assessLoan(Long id) {
-        if (assessUserProperty(id) || assessUserIncome(id)) {
-            return String.valueOf(calculateLoanAmount(id));
+
+        System.out.println(config.getMinimalCarPrice() + " " + config.getMinimalIncome());
+
+        User user = getUser(id);
+        if (assessUserProperty(user) || assessUserIncome(user)) {
+            return String.valueOf(calculateLoanAmount(user));
         }
         return "ОТКАЗ";
     }
 
-    private boolean assessUserProperty(Long id) {
-        return getUser(id).getCar().getPrice() > config.getMinimalCarPrice();
+    private boolean assessUserProperty(User user) {
+        return user.getCar().getPrice() > config.getMinimalCarPrice();
     }
 
-    private boolean assessUserIncome(Long id) {
-        return getUser(id).getIncome() > config.getMinimalIncome();
+    private boolean assessUserIncome(User user) {
+        return user.getIncome() > config.getMinimalIncome();
     }
 
-    private Integer calculateLoanAmount(Long id) {
-        if (getUser(id).getIncome()*config.getIncomeCoeff() >
-                getUser(id).getCar().getPrice()*config.getPropertyCoeff()) {
-            return getUser(id).getIncome()*config.getIncomeCoeff();
+    private Integer calculateLoanAmount(User user) {
+        if (user.getIncome()*config.getSixMonthsIncomeCoeff() >
+                user.getCar().getPrice()*config.getPropertyCoeff()) {
+            return user.getIncome()*config.getSixMonthsIncomeCoeff();
         } else {
-            return (int) (getUser(id).getCar().getPrice()* config.getPropertyCoeff());
+            return (int) (user.getCar().getPrice()* config.getPropertyCoeff());
         }
-        //return (getUser(id).getIncome()*config.getIncomeCoeff() > getUser(id).getCar().getPrice()*config.getPropertyCoeff()) ? getUser(id).getIncome()*config.getIncomeCoeff() : (int) (getUser(id).getCar().getPrice()* config.getPropertyCoeff());
     }
 }

@@ -12,6 +12,9 @@ public class User {
 
     private int income;
 
+    public User() {
+    }
+
     public User(Long id, Car car, int income) {
         this.id = id;
         this.car = car;
