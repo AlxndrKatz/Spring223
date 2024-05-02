@@ -1,7 +1,9 @@
 package su.soviet.carsMVC.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @ConfigurationProperties("loan")
@@ -10,6 +12,12 @@ public class UserConfig {
     private  int minimalCarPrice;
     private int sixMonthsIncomeCoeff;
     private double propertyCoeff;
+
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
     public int getMinimalIncome() {
         return minimalIncome;

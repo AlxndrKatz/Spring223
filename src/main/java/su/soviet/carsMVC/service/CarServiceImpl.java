@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import su.soviet.carsMVC.config.CarConfig;
-import su.soviet.carsMVC.exceptions.CarSortException;
+import su.soviet.carsMVC.exceptions.ApplicationException;
 import su.soviet.carsMVC.model.Car;
 import su.soviet.carsMVC.repository.CarRepository;
 
@@ -52,7 +52,7 @@ public class CarServiceImpl implements CarService {
             return null;
         }
         if (!Arrays.asList(carConfig.getEnableSortingFields()).contains(sort)) {
-            throw new CarSortException();
+            throw new ApplicationException();
         }
         return sort;
     }
