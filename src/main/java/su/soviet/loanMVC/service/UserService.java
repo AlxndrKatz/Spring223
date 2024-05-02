@@ -1,6 +1,6 @@
-package su.soviet.carsMVC.service;
+package su.soviet.loanMVC.service;
 
-import su.soviet.carsMVC.model.User;
+import su.soviet.loanMVC.model.User;
 
 public interface UserService {
     User getUser(Long id);

@@ -1,4 +1,4 @@
-package su.soviet.carsMVC.exceptions;
+package su.soviet.loanMVC.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

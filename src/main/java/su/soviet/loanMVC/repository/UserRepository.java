@@ -1,7 +1,7 @@
-package su.soviet.carsMVC.repository;
+package su.soviet.loanMVC.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import su.soviet.carsMVC.model.User;
+import su.soviet.loanMVC.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 }

@@ -1,6 +1,6 @@
-package su.soviet.carsMVC.service;
+package su.soviet.loanMVC.service;
 
-import su.soviet.carsMVC.model.Car;
+import su.soviet.loanMVC.model.Car;
 
 import java.util.List;
 

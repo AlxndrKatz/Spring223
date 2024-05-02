@@ -1,12 +1,12 @@
-package su.soviet.carsMVC.service;
+package su.soviet.loanMVC.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import su.soviet.carsMVC.config.UserConfig;
-import su.soviet.carsMVC.model.User;
-import su.soviet.carsMVC.repository.UserRepository;
+import su.soviet.loanMVC.config.UserConfig;
+import su.soviet.loanMVC.model.User;
+import su.soviet.loanMVC.repository.UserRepository;
 
 @Service
 @PropertySource("application.yml")

@@ -1,4 +1,4 @@
-package su.soviet.carsMVC.config;
+package su.soviet.loanMVC.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

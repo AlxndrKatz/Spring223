@@ -1,4 +1,4 @@
-package su.soviet.carsMVC.model;
+package su.soviet.loanMVC.model;
 
 import jakarta.persistence.*;
 
