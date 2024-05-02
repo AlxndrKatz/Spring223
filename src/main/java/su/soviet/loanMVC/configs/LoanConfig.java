@@ -1,4 +1,4 @@
-package su.soviet.loanMVC.config;
+package su.soviet.loanMVC.configs;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -7,11 +7,12 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @ConfigurationProperties("loan")
-public class UserConfig {
+public class LoanConfig {
     private int minimalIncome;
     private  int minimalCarPrice;
     private int sixMonthsIncomeCoeff;
     private double propertyCoeff;
+    private String incomeUrl;
 
 
     @Bean
@@ -49,5 +50,13 @@ public class UserConfig {
 
     public void setPropertyCoeff(double propertyCoeff) {
         this.propertyCoeff = propertyCoeff;
+    }
+
+    public String getIncomeUrl() {
+        return incomeUrl;
+    }
+
+    public void setIncomeUrl(String incomeUrl) {
+        this.incomeUrl = incomeUrl;
     }
 }

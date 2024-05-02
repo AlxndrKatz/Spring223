@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import su.soviet.loanMVC.service.UserService;
+import su.soviet.loanMVC.services.UserService;
 
 @Controller
 public class LoanController {
@@ -18,7 +18,7 @@ public class LoanController {
     }
 
     @GetMapping("/loan")
-    public String getLoanByUserId(@RequestParam(value = "userId", required = false) Long userId,
+    public String getLoanByUserId(@RequestParam(value = "userId") Long userId,
                                   Model model) {
         model.addAttribute("loan", service.assessLoan(userId));
         return "loan";
