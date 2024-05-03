@@ -3,7 +3,7 @@ package su.soviet.loanMVC.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import su.soviet.loanMVC.client.IncomeClient;
+import su.soviet.loanMVC.clients.IncomeClient;
 import su.soviet.loanMVC.configs.LoanConfig;
 import su.soviet.loanMVC.dao.User;
 

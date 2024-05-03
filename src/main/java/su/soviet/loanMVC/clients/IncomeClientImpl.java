@@ -1,4 +1,4 @@
-package su.soviet.loanMVC.client;
+package su.soviet.loanMVC.clients;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
