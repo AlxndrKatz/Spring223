@@ -1,4 +1,4 @@
-package su.soviet.loanMVC.models;
+package su.soviet.loanMVC.dao;
 
 import jakarta.persistence.*;
 
@@ -10,15 +10,12 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     private Car car;
 
-    private int income;
-
     public User() {
     }
 
     public User(Long id, Car car, int income) {
         this.id = id;
         this.car = car;
-        this.income = income;
     }
 
     public Long getId() {
@@ -35,13 +32,5 @@ public class User {
 
     public void setCar(Car car) {
         this.car = car;
-    }
-
-    public int getIncome() {
-        return income;
-    }
-
-    public void setIncome(int income) {
-        this.income = income;
     }
 }

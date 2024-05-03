@@ -1,9 +1,7 @@
 package su.soviet.loanMVC.services;
 
-import su.soviet.loanMVC.models.User;
+import su.soviet.loanMVC.dao.User;
 
 public interface UserService {
     User getUser(Long id);
-
-    Integer assessLoan(Long id);
 }

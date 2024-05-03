@@ -5,15 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import su.soviet.loanMVC.services.UserService;
+import su.soviet.loanMVC.services.LoanService;
 
 @Controller
 public class LoanController {
 
-    private final UserService service;
+    private final LoanService service;
 
     @Autowired
-    public LoanController(UserService service) {
+    public LoanController(LoanService service) {
         this.service = service;
     }
 
