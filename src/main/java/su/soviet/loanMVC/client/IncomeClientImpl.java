@@ -1,10 +1,9 @@
-package su.soviet.loanMVC.services;
+package su.soviet.loanMVC.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import su.soviet.loanMVC.configs.LoanConfig;
 import su.soviet.loanMVC.configs.WebConfig;
 import su.soviet.loanMVC.dto.UserDTO;
 
@@ -12,7 +11,7 @@ import java.util.Objects;
 
 @Service
 @PropertySource("application.yml")
-public class WebServiceImpl implements WebService {
+public class IncomeClientImpl implements IncomeClient {
 
     @Autowired
     private WebConfig webConfig;

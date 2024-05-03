@@ -3,6 +3,7 @@ package su.soviet.loanMVC.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import su.soviet.loanMVC.client.IncomeClient;
 import su.soviet.loanMVC.configs.LoanConfig;
 import su.soviet.loanMVC.dao.User;
 
@@ -15,18 +16,20 @@ public class LoanServiceImpl implements LoanService {
     @Autowired
     private LoanConfig loanConfig;
     @Autowired
-    WebService webService;
+    private IncomeClient incomeClient;
 
     @Override
     public Integer assessLoan(Long id) {
         User user = userService.getUser(id);
-        if (assessUserProperty(user) || assessUserIncome(webService.getIncome(id))) {
-            return calculateLoanAmount(user);
+        int income = getIncome(id);
+
+        if (assessCarPrice(user) || assessUserIncome(income)) {
+            return calculateLoanAmount(user, income);
         }
         return 0;
     }
 
-    private boolean assessUserProperty(User user) {
+    private boolean assessCarPrice(User user) {
         return user.getCar().getPrice() > loanConfig.getMinimalCarPrice();
     }
 
@@ -34,12 +37,16 @@ public class LoanServiceImpl implements LoanService {
         return income > loanConfig.getMinimalIncome();
     }
 
-    private Integer calculateLoanAmount(User user) {
-        if (webService.getIncome(user.getId()) * loanConfig.getSixMonthsIncomeCoeff() >
+    private Integer calculateLoanAmount(User user, int income) {
+        if (income * loanConfig.getSixMonthsIncomeCoeff() >
                 user.getCar().getPrice() * loanConfig.getPropertyCoeff()) {
-            return webService.getIncome(user.getId()) * loanConfig.getSixMonthsIncomeCoeff();
+            return income * loanConfig.getSixMonthsIncomeCoeff();
         } else {
             return (int) (user.getCar().getPrice() * loanConfig.getPropertyCoeff());
         }
+    }
+
+    private int getIncome(Long id) {
+        return incomeClient.getIncome(id);
     }
 }

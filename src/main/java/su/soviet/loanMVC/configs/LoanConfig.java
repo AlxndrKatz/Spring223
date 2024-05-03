@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties("loan")
 public class LoanConfig {
     private int minimalIncome;
-    private int minimalCarPrice;
+    private  int minimalCarPrice;
     private int sixMonthsIncomeCoeff;
     private double propertyCoeff;
 
